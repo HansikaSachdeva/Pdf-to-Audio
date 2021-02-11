@@ -2,7 +2,7 @@
 #pip install PyPDF2
 #pip install pyttsx3
 
-#Using PyPDF2 to split the pdf page by page, rading each page and
+#Using PyPDF2 to split the pdf page by page, reading each page and
 #sending the text ahead
 import PyPDF2
 
