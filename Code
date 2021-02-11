@@ -1,0 +1,27 @@
+#First, install PyPDF2 and pyttsx3 using
+#pip install PyPDF2
+#pip install pyttsx3
+
+#Using PyPDF2 to split the pdf page by page, rading each page and
+#sending the text ahead
+import PyPDF2
+
+#Replace file with your pdf(should be in same directory as the code)
+#rb ensures the text is converted to binary
+pdfReader = PyPDF2.PdfFileReader(open('file.pdf', 'rb'))
+
+#pyttsx3 coverts the text to speech
+import pyttsx3
+speaker = pyttsx3.init()
+
+#Looping through each page using PyPDF2
+#Feeding each line to pyttsx3 so it reads aloud
+for page_num in range(pdfReader.numPages):
+    text =  pdfReader.getPage(page_num).extractText()
+    speaker.say(text)
+    speaker.runAndWait()
+speaker.stop()
+
+#Saving the audio as an mp3 file
+speaker.save_to_file(text, 'audio2.mp3')
+speaker.runAndWait()
